@@ -1,11 +1,12 @@
 from flask import Flask, jsonify
+from app.config import TestingConfig
 from flask_swagger import swagger
 from flask_swagger_ui import get_swaggerui_blueprint
 
 from app.extensions import db, ma
 
 
-def create_app(config_class):
+def create_app(config_class=TestingConfig):
     app = Flask(__name__)
 
     app.config.from_object(config_class)
