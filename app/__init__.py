@@ -22,6 +22,18 @@ def create_app(config_class=TestingConfig):
     app.register_blueprint(mechanic_bp, url_prefix="/mechanics")
     app.register_blueprint(service_ticket_bp, url_prefix="/service-tickets")
 
+        @app.route("/")
+    def home():
+        return jsonify({
+            "message": "Mechanic Shop API is running",
+            "endpoints": [
+                "/customers/",
+                "/mechanics/",
+                "/service-tickets/",
+                "/api/docs/"
+            ]
+        }), 200
+    
     @app.route("/swagger.json")
     def swagger_spec():
         swag = swagger(app)
@@ -30,7 +42,7 @@ def create_app(config_class=TestingConfig):
             "version": "1.0.0",
             "description": "Documentation for the Mechanic Shop API."
         }
-        swag["host"] = "mechanic-shop-api-1nfm.onrender.com"
+        swag["host"] = "mechanic-shop-api-lnfm.onrender.com"
         swag["schemes"] = ["https"]
         swag["securityDefinitions"] = {
             "BearerAuth": {
