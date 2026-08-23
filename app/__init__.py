@@ -22,7 +22,7 @@ def create_app(config_class=TestingConfig):
     app.register_blueprint(mechanic_bp, url_prefix="/mechanics")
     app.register_blueprint(service_ticket_bp, url_prefix="/service-tickets")
 
-        @app.route("/")
+    @app.route("/")
     def home():
         return jsonify({
             "message": "Mechanic Shop API is running",
